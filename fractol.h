@@ -6,7 +6,7 @@
 /*   By: aamraouy <aamraouy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 13:05:44 by aamraouy          #+#    #+#             */
-/*   Updated: 2025/02/24 16:46:47 by aamraouy         ###   ########.fr       */
+/*   Updated: 2025/02/25 08:45:58 by aamraouy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,13 @@ typedef struct s_fractal
 	t_image		image;
 }	t_fractal;
 
+void	*image_init(t_fractal *fractus);
+void	establish_connection(t_fractal *fractus);
 void	draw_mandelbrot(t_fractal *fractus, int x, int y);
 int		mouse_hook(int button, int x, int y, t_fractal *fractus);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 void	ft_putstr_fd(char *s, int fd);
-void	error_exit();
+size_t	ft_strlen(char *str);
+void	error_exit(char *error);
 
 #endif

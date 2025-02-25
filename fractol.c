@@ -6,7 +6,7 @@
 /*   By: aamraouy <aamraouy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 13:05:50 by aamraouy          #+#    #+#             */
-/*   Updated: 2025/02/24 16:58:36 by aamraouy         ###   ########.fr       */
+/*   Updated: 2025/02/25 08:47:04 by aamraouy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	julia(t_fractal *fractus, char *real, char *i)
 	if (!fractus->mlx_window)
 	{
 		mlx_destroy_window(fractus->mlx_connect, fractus->mlx_window);
-		error_exit();
+		error_exit("julia window error");
 	}
 	img = mlx_new_image(fractus->mlx_connect, WIDTH, HEIGHT);
 	fractus->image.buffer = mlx_get_data_addr(img, &fractus->image.bits_per_pexil,
@@ -45,20 +45,7 @@ void	mandela(t_fractal *fractus)
 {
 	fractus->width = WIDTH;
 	fractus->height = HEIGHT;
-	fractus->mlx_connect = mlx_init();
-	if (!fractus->mlx_connect)
-	{
-		perror("mlx_init");
-		return;
-	}
-	fractus->mlx_window = mlx_new_window(fractus->mlx_connect,
-										  fractus->width,
-										  fractus->height, "Mandelbrot Fractal");
-	if (!fractus->mlx_window)
-	{
-		mlx_destroy_window(fractus->mlx_connect, fractus->mlx_window);
-		error_exit();
-	}
+	establish_connection(fractus);
 	fractus->max_im = 1.0;
 	fractus->max_re = 1.0;
 	fractus->min_im = -1.0;

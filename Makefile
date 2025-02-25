@@ -1,8 +1,8 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -lmlx  -framework OpenGL -framework AppKit
 NAME = fractol
-SRC=fractol.c mandelbrot.c mouse_control.c\
-	utils/ft_putstr_fd.c utils/ft_strncmp.c utils/error.c
+SRC=fractol.c mandelbrot.c mouse_control.c connection_stuff.c \
+	utils/ft_util.c utils/error.c
 OBJ=$(SRC:.c=.o)
 
 all:$(NAME)

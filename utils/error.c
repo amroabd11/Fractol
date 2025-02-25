@@ -6,14 +6,14 @@
 /*   By: aamraouy <aamraouy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 10:19:04 by aamraouy          #+#    #+#             */
-/*   Updated: 2025/02/23 10:21:26 by aamraouy         ###   ########.fr       */
+/*   Updated: 2025/02/25 08:42:46 by aamraouy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fractol.h"
 
-void	error_exit()
+void	error_exit(char *error)
 {
-	write(1, "Error\n", 6);
+	write(1, error, ft_strlen(error));
 	exit(1);
 }
