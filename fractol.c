@@ -6,7 +6,7 @@
 /*   By: aamraouy <aamraouy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 13:05:50 by aamraouy          #+#    #+#             */
-/*   Updated: 2025/02/25 08:47:04 by aamraouy         ###   ########.fr       */
+/*   Updated: 2025/02/26 12:03:16 by aamraouy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,12 @@ void	mandela(t_fractal *fractus)
 	fractus->max_re = 1.0;
 	fractus->min_im = -1.0;
 	fractus->min_re = -2.5;
+	fractus->view.zoom = 1.0;
+	fractus->view.offy = 0.0;
+	fractus->view.offx = 0.0;
 	draw_mandelbrot(fractus, 0, 0);//TODO
 	mlx_mouse_hook(fractus->mlx_window, mouse_hook, fractus);
+	mlx_key_hook(fractus->mlx_window, event_handler, fractus);
 	mlx_loop(fractus->mlx_connect);
 	exit(0);
 }

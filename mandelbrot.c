@@ -6,7 +6,7 @@
 /*   By: aamraouy <aamraouy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 10:28:49 by aamraouy          #+#    #+#             */
-/*   Updated: 2025/02/25 09:05:22 by aamraouy         ###   ########.fr       */
+/*   Updated: 2025/02/26 12:13:01 by aamraouy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	math_stuff(t_fractal *fractus, t_complex c, t_complex z, int x, int y)
 	int		iter;
 
 	iter = 0;
-	while (z.z_re * z.z_re + z.z_im * z.z_im <= 4 && iter++ < 100)
+	while (z.z_re * z.z_re + z.z_im * z.z_im <= 4 && iter++ < 100)//this loop iteration is about checking wither we get out the mandel set or not ,by checking the iter value 
 	{
 		z_new_re = z.z_re * z.z_re - z.z_im * z.z_im + c.c_re;
 		z.z_im = 2.0 * z.z_re * z.z_im + c.c_im;
@@ -58,13 +58,15 @@ void	draw_mandelbrot(t_fractal *fractus, int x, int y)
 	img = image_init(fractus);
 	while (y < fractus->height)
 	{
-		c.c_im = fractus->max_im - (y * (fractus->max_im - fractus->min_im) / (fractus->height - 1));//c coordinates in y-axis
+		c.c_im = fractus->max_im - (y * (fractus->max_im - fractus->min_im) / (HEIGHT - 1));//c coordinates in y-axis
 		x = 0;
 		while (x < fractus->width)
 		{
-			c.c_re = fractus->min_re + (x * (fractus->max_re - fractus->min_re) / (fractus->width - 1));
+			c.c_re = fractus->min_re + (x * (fractus->max_re - fractus->min_re) / (WIDTH - 1));
 			z.z_re = 0;
 			z.z_im = 0;
+			// c.c_im = map_imag(y, fractus);
+			// c.c_re = map_real(x, fractus);
 			math_stuff(fractus, c, z, x, y);
 			x++;
 		}
