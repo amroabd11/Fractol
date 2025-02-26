@@ -6,7 +6,7 @@
 /*   By: aamraouy <aamraouy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 10:28:49 by aamraouy          #+#    #+#             */
-/*   Updated: 2025/02/26 12:13:01 by aamraouy         ###   ########.fr       */
+/*   Updated: 2025/02/26 13:51:10 by aamraouy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,15 @@ void	draw_mandelbrot(t_fractal *fractus, int x, int y)
 	img = image_init(fractus);
 	while (y < fractus->height)
 	{
-		c.c_im = fractus->max_im - (y * (fractus->max_im - fractus->min_im) / (HEIGHT - 1));//c coordinates in y-axis
+		// c.c_im = fractus->max_im - (y * (fractus->max_im - fractus->min_im) / (HEIGHT - 1));//c coordinates in y-axis
 		x = 0;
 		while (x < fractus->width)
 		{
-			c.c_re = fractus->min_re + (x * (fractus->max_re - fractus->min_re) / (WIDTH - 1));
+			// c.c_re = fractus->min_re + (x * (fractus->max_re - fractus->min_re) / (WIDTH - 1));
+			c.c_im = map_imag(y, fractus);
+			c.c_re = map_real(x, fractus);
 			z.z_re = 0;
 			z.z_im = 0;
-			// c.c_im = map_imag(y, fractus);
-			// c.c_re = map_real(x, fractus);
 			math_stuff(fractus, c, z, x, y);
 			x++;
 		}

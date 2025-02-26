@@ -6,7 +6,7 @@
 /*   By: aamraouy <aamraouy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 15:51:10 by aamraouy          #+#    #+#             */
-/*   Updated: 2025/02/26 12:01:11 by aamraouy         ###   ########.fr       */
+/*   Updated: 2025/02/26 13:56:35 by aamraouy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int	mouse_hook(int button, int x, int y, t_fractal *fractus)
 {
 	double	zoom_factor;
 
+	zoom_factor = 0.0;
 	if (button == 4)
 		zoom_factor = 0.9;
 	else if (button == 5)
