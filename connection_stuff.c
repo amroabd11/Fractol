@@ -6,7 +6,7 @@
 /*   By: aamraouy <aamraouy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 08:13:01 by aamraouy          #+#    #+#             */
-/*   Updated: 2025/02/25 08:45:31 by aamraouy         ###   ########.fr       */
+/*   Updated: 2025/02/27 09:07:59 by aamraouy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,8 @@ void	establish_connection(t_fractal *fractus)
 		perror("mlx_init");
 		exit(1);
 	}
-	fractus->mlx_window = mlx_new_window(fractus->mlx_connect,
-										fractus->width,
-										fractus->height, "Mandelbrot Fractal");
+	fractus->mlx_window = mlx_new_window(fractus->mlx_connect, 800, 800,
+										"Mandelbrot Fractal");
 	if (!fractus->mlx_window)
 	{
 		mlx_destroy_window(fractus->mlx_connect, fractus->mlx_window);
@@ -35,11 +34,9 @@ void	*image_init(t_fractal *fractus)
 	void	*img;
 
 	img = mlx_new_image(fractus->mlx_connect, WIDTH, HEIGHT);
-	if (!img)
-		error_exit("image");
-	fractus->image.buffer = mlx_get_data_addr(img,
-											&fractus->image.bits_per_pexil,
-											&fractus->image.line_bytes,
-											&fractus->image.endian);
+	fractus->buffer = mlx_get_data_addr(img,
+											&fractus->bpp,
+											&fractus->line_bytes,
+											&fractus->endian);
 	return (img);
 }
